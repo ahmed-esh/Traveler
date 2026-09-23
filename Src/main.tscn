@@ -1,9 +1,26 @@
-[gd_scene format=3 uid="uid://peyfmjyljydi"]
+[gd_scene format=3 uid="uid://dhl8nnh1b1nxl"]
 
-[node name="Main" type="Control" unique_id=158338674]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" uid="uid://d16cvbec5uuxk" path="res://Src/map_generator.gd" id="1_map"]
+[ext_resource type="Texture2D" uid="uid://cwlicawykirq6" path="res://icon.svg" id="2_icon"]
+[ext_resource type="Script" uid="uid://bnjshh8104dsx" path="res://Src/player.gd" id="3_player"]
+
+[node name="ProceduralMap" type="Node2D" unique_id=548875986]
+texture_filter = 1
+script = ExtResource("1_map")
+
+[node name="Player Node" type="Node2D" parent="." unique_id=807355488]
+z_index = 1
+script = ExtResource("3_player")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player Node" unique_id=2049993275]
+scale = Vector2(0.0625, 0.0625)
+texture = ExtResource("2_icon")
+
+[node name="Camera2D" type="Camera2D" parent="Player Node" unique_id=1688487412]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 5000
+limit_bottom = 5000
+position_smoothing_enabled = true
+position_smoothing_speed = 12.0
